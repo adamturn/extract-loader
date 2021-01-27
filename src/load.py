@@ -30,13 +30,13 @@ class DBConfig(object):
         return psycopg2.connect(host=self.host, port=self.port, database=self.name, user=self.user, password=self.password)
 
 
-def copy_into_postgres(fname, df, conn):
+def copy_into_postgres(df, conn, fname):
     """Loads data into Postgres.
 
     Args:
-        fname: str name of the original file
         df: pandas DataFrame with the extracted data
         conn: active psycopg2 connection object
+        fname: str name of the original file
     """
     print(f"`{fname}`: Loading data...")
 

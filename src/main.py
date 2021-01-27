@@ -21,14 +21,12 @@ def pipeline(fpath):
 
     if ftype == "pdf":
         df = extract.dataframe_from_pdf(fpath)
-
     elif ftype in ("xls", "xlsx", "xlsm"):
         df = extract.dataframe_from_xlsx(fpath)
 
     conn = load.DBConfig.from_json("/home/adam/cfg/postgres-test.json").create_psycopg2_connection()
-
     try:
-        load.copy_into_postgres(fname, df, conn)
+        load.copy_into_postgres(df, conn, fname)
     finally:
         conn.close()
     print(f"`{fname}`: End of pipeline.")
