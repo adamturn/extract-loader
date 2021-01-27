@@ -41,7 +41,7 @@ if __name__ == "__main__":
 
     fpaths = tuple(os.path.join(dir, f) for f in os.listdir(dir) if os.path.isfile(os.path.join(dir, f)))
 
-    pipelines = [mp.Process(target=pipeline, args=(fpath,)) for fpath in fpaths]
+    pipelines = tuple(mp.Process(target=pipeline, args=(fpath,)) for fpath in fpaths)
 
     for p in pipelines:
         p.start()
