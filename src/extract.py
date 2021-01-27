@@ -10,6 +10,7 @@ import pandas as pd
 
 def dataframe_from_pdf(fpath):
     print("PDF is not handled yet!")
+
     df = pd.DataFrame()
 
     return df
